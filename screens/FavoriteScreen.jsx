@@ -7,6 +7,7 @@ import { Text, Icon } from '@rneui/themed';
 
 import myStyles from '../style/styleSheet';
 import FavoriteListItems from '../components/FavoriteListItems';
+import apiKey from '../apikey';
 
 export default function FavoriteScreen({ navigation }){
     const [error, setError] = useState(null);
@@ -23,7 +24,7 @@ export default function FavoriteScreen({ navigation }){
                         url: `https://api.yelp.com/v3/businesses/${favorites}`,
                         headers: {
                             accept: 'application/json',
-                            Authorization: 'Bearer'
+                            Authorization: `Bearer ${apiKey}`
                         }
                     };
                     return axios.request(options);
@@ -58,9 +59,6 @@ export default function FavoriteScreen({ navigation }){
 
         return favoritesFocus;
     }, [favorites, navigation]);
-
-
-    // console.log(favorites);
 
     return (
         <View style={myStyles.backgroundContainer}>

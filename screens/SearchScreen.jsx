@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 import myStyles from '../style/styleSheet';
 import PlaceListItem from '../components/PlaceListItem';
+import apiKey from '../apikey';
 
 
 export default function SearchScreen({ navigation }){
@@ -30,7 +31,7 @@ export default function SearchScreen({ navigation }){
             },
             headers: {
                 accept: 'application/json',
-                Authorization: 'Bearer'
+                Authorization: `Bearer ${apiKey}`
             }
           };
 

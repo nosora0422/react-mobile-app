@@ -31,8 +31,6 @@ export default function LocationScreen({ navigation }){
         setUnixTime(unixTime);
     };
 
-    // console.log(unixTime);
-
     const handleTimeChange = (selectedValue) => {
         // Update the time value state variable
         setTimeValue(selectedValue);

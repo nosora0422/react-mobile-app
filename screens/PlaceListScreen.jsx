@@ -6,6 +6,7 @@ import { Text, Icon, ButtonGroup, Button, FAB } from '@rneui/themed';
 
 import PlaceListItem from '../components/PlaceListItem';
 import myStyles from '../style/styleSheet';
+import apiKey from '../apikey';
 
 export default function CategoryListScreen({ navigation, route }){
     const [error, setError] = useState(null);
@@ -30,9 +31,6 @@ export default function CategoryListScreen({ navigation, route }){
         return `${hours}:${minutes}`;
     };
 
-    // console.log(time);
-    // console.log(convertUnixToTime(time));
-
     const fetchData = () => {
         const options = {
             method: 'GET',
@@ -46,7 +44,7 @@ export default function CategoryListScreen({ navigation, route }){
             },
             headers: {
                 accept: 'application/json',
-                Authorization: 'Bearer'
+                Authorization: `Bearer ${apiKey}`
             }
           };
 

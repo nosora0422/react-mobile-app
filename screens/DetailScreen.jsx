@@ -15,6 +15,7 @@ import { Text, Icon, Button } from '@rneui/themed';
 
 import Carousel from 'react-native-anchor-carousel';
 import myStyles from '../style/styleSheet';
+import apiKey from '../apikey';
 
 export default function DetailScreen({ route }){
     const { placeId } = route.params;
@@ -28,7 +29,7 @@ export default function DetailScreen({ route }){
         url: `https://api.yelp.com/v3/businesses/${placeId}`,
         headers: {
           accept: 'application/json',
-          Authorization: 'Bearer'
+          Authorization: `Bearer ${apiKey}`
         }
       };
     
@@ -37,10 +38,8 @@ export default function DetailScreen({ route }){
       axios.request(options)
       .then(
         (result)=>{
-          // console.log(result);
           setDetailResult(result.data); 
           setIsLoaded(true);
-          // console.log(dataResult);
         }
       )
       .catch((error)=>{
@@ -49,12 +48,6 @@ export default function DetailScreen({ route }){
         console.log(error);
       })
     },[]);
-
-
-    // console.log(detailResult);
-    // console.log(detailResult.photos)
-    // console.log(PlaceData[0].slideImg);
-
 
     return(
         <ScrollView style={myStyles.backgroundContainer}>
@@ -153,8 +146,6 @@ function displayDetialData(error, isLoaded, detailResult) {
             return createTwoButtonAlert();
         }
     };
-
-    // console.log(favorites);
 
     // display days based on "day" in "open"
     function translateDays(number) {
